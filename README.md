@@ -130,6 +130,7 @@ Video of Team Profile Generator:
 - bcrypt
 - express-session
 - connect-session-sequelize 
+- Nodemon
 
 ## License:
 
