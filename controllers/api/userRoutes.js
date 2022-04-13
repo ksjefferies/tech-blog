@@ -1,39 +1,122 @@
 const router = require('express').Router();
 
-const { Users, Blogs, Comments } = require('../../models');
+const e = require('express');
+const { User, Blog, Comment } = require("../../models");
 
-//get all users
-router.get('', (req, res) => {
+// Get all users
+router.get("/", async (req, res) => {
+    try {
+        const allUsers = await User.findAll({
+            attributes: {
+                exclude: ["password"]
+            }
+        });
+        if (allUsers) {
+            res.status(200).json(allUsers);
+        } else {
+            res.status(400).json({ message: "No users found" })
+        };
+    }
+    catch (err) {
+        res.status(500).json(err);
+    };
+});
 
-})
-//get single user with id
-router.get('', (req, res) => {
+// Get a single user
+router.get("/:id", async (req, res) => {
+    try {
+        const singleUser = await User.findOne({
+            attributes: {
+                exclude: ["password"]
+            },
+            where: {
+                id: req.params.id
+            }
+        });
+        if (singleUser) {
+            res.status(200).json(singleUser);
+        } else {
+            res.status(400).json({ message: "That user was not found" });
+        };
+    }
+    catch (err) {
+        res.status(500).json(err);
+    };
+});
 
-})
-//login
-router.post('', (req, res) => {
+// // Login
+// router.post("/", async (req, res) => {
 
-})
-//logout
-router.post('', (req, res) => {
+// });
 
-})
-//create new user
-router.post('', (req, res) => {
+// // Logout
+// router.post("/", async (req, res) => {
 
-})
-//update a user
-router.put('', (req, res) => {
+// });
 
-})
-//delete user
-router.delete('', (req, res) => {
+// Create a new user
+// router.post("/", async (req, res) => {
+//     try {
+//         const createUser = await User.create({
+//             first_name: req.body.first_name,
+//             last_name: req.body.last_name,
+//             email: req.body.email,
+//             // figure out how to make the hash the password
+//             password: req.body.password
+//         });
+//         // createUser.password = await bcrypt.hash(req.body.password, 10);
+//         res.status(200).json(createUser);
+//     }
+//     catch (err) {
+//         res.status(500).json(err);
+//     };
+// });
 
-})
+// Update an existing user
+router.put("/:id", async (req, res) => {
+    try {
+        const updateUser = await User.update({
+            first_name: req.body.first_name,
+            last_name: req.body.last_name,
+            email: req.body.email,
+            // figure out how to make the hash the password
+            password: req.body.password
+        },
+            {
+                where: {
+                    id: req.params.id
+                }
+            }
+        );
+        // createUser.password = await bcrypt.hash(req.body.password, 10);
+        if (updateUser) {
+            res.json(updateUser);
+        } else {
+            res.status(400).json({ message: "That user was not found" });
+        };
+    }
+    catch (err) {
+        res.status(500).json(err);
+    };
+});
 
-
-
-
-
+// Delete a user
+router.delete("/:id", (req, res) => {
+    User.destroy({
+        where: {
+            id: req.params.id
+        }
+    })
+        .then(destroyUser => {
+            if (!destroyUser) {
+                res.status(400).json({ message: "That user was not found" });
+                return;
+            }
+            res.json(destroyUser);
+        })
+        .catch(err => {
+            res.status(500).json(err)
+        });
+});
 
 module.exports = router;

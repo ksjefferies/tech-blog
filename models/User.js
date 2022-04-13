@@ -3,6 +3,13 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 const bcrypt = require('bcrypt');
 
+async function hashPassword(user,option) {
+    if(user.password) {
+        user.password = await bcrypt.hash(user.password,10)
+    }
+    return user
+}
+
 class User extends Model { }
 
 User.init(
@@ -39,5 +46,9 @@ User.init(
         modelName: 'user'
       }
 );
+
+User.beforeBulkCreate((async (users) => Promise.all(users.map(i => hashPassword(i)))))
+User.beforeCreate(hashPassword)
+User.beforeUpdate(hashPassword)
 
 module.exports = User;
