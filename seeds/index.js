@@ -1,15 +1,15 @@
-const userInfo = require('./userData');
-const blogInfo = require('./blogData');
-const commentInfo = require('./commentData');
+const userSeed = require('./userSeeds');
+const postSeed = require('./postSeeds');
+const commentSeed = require('./commentSeeds');
 
 require('dotenv').config();
 const sequelize = require('../config/connection');
 
 const seedAll = async () => {
   await sequelize.sync({ force: true });
-  await userInfo();
-  await blogInfo();
-  await commentInfo();
+  await userSeed();
+  await postSeed();
+  await commentSeed();
 
   process.exit(0);
 };
