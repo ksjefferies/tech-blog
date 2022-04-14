@@ -12,7 +12,7 @@ const postSeed = [
         "user_id": 3
     },
     {
-        "title": "Best pizza logcation in Addison, TX",
+        "title": "Best pizza location in Addison, TX",
         "post_text": "Zalats Pizza in Addison: Awesome pizza! Stays open later. Staff is super helpful with suggestions or any questions you may have. They offer convenient carryout through a walk up window. I had the 18 inch Zealot and it was absolutely amazing. (I also ordered before close so that’s really saying something.) The pizza was the perfect texture and the crust was crunchy and scrumptious! This place was awesome!",
         "user_id": 1
     },

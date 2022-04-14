@@ -116,6 +116,7 @@ Video of Team Profile Generator:
 - [Kelly Jefferies](https://github.com/ksjefferies)
 
 ## Contributors and Resources
+https://www.npmjs.com/package/express-handlebars
 
 - Eugene Ahn
 - Daniel Norred

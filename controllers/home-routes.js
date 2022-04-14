@@ -2,7 +2,6 @@ const { Post, User, Comment } = require('../models');
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 const withAuthorization = require('../utils/auth');
-
 router.get('/', async (req, res) => {
     try {    
       const postData = await Post.findAll({
@@ -11,7 +10,9 @@ router.get('/', async (req, res) => {
 
       const posts = postData.map((post) => post.get({ plain: true }));
   
-      res.render('all-posts-admin', { posts, loggedIn: req.session.loggedIn});
+      res.render('landing_page', {
+       posts: posts
+      })
     } catch (err) {
       res.status(500).json(err);
     }
