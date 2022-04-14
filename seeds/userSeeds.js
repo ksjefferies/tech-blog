@@ -2,38 +2,32 @@ const { User } = require('../models');
 
 const userSeed = [
   {
-    "f_name": "Jason",
-    "l_name": "Walters",
+    "username": "JWalters",
     "email": "Jason@gmail.com",
     "password": "password12345"
   },
   {
-    "f_name": "Lisa",
-    "l_name": "Jennings",
+    "username": "LJennings",
     "email": "Lisa@gmail.com",
     "password": "password12345"
   },
   {
-    "f_name": "Daniel",
-    "l_name": "Hixson",
+    "username": "DHixson",
     "email": "Daniel@gmail.com",
     "password": "password12345"
   },
   {
-    "f_name": "Karen",
-    "l_name": "Downey",
+    "username": "KDowney",
     "email": "Karen@gmail.com",
     "password": "password12345"
   },
   {
-    "f_name": "Eugene",
-    "l_name": "Ahn",
+    "username": "EAhn",
     "email": "Eugene@gmail.com",
     "password": "password12345"
   },
   {
-    "f_name": "Austin",
-    "l_name": "Vazquez",
+    "username": "AVazquez",
     "email": "Austin@gmail.com",
     "password": "password12345"
   }
