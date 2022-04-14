@@ -115,10 +115,11 @@ Video of Team Profile Generator:
 
 - [Kelly Jefferies](https://github.com/ksjefferies)
 
-## Contributors
+## Contributors and Resources
 
 - Eugene Ahn
 - Daniel Norred
+- Ghibli
 
 ## Technologies Used:
 - Javascript

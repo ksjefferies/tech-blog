@@ -1,0 +1,15 @@
+{{!-- This file should have the data related to the comments. The data should include all the people who posted their comments and their user id --}}
+
+<article class="comment">
+    {{#each this}}
+    <div class="comment-header">
+        <h3>{{!--Title of comment--}}</h3>
+    </div>
+    <div>
+        <p class="comment-text">{{!--the comment's text--}}</p>
+    </div>
+    <div>
+        <p>{{!--Name of the commenter and date the comment was created--}}</p>
+    </div>
+    {{/each}}
+</article>

@@ -1,0 +1,12 @@
+{{#if posts.length}}
+<section>
+    <h2>Your Blog Posts</h3>
+    {{#each posts as |post|}}
+        {{> post_info post}}
+    {{/each}}
+</section>
+{{/if}}
+
+<button type="submit"><a href="{{!-- add route to new post--}}">Post a new blog</a></button>
+
+<script src="../public/javascript/add_post.js"></script>
