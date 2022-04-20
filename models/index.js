@@ -1,11 +1,38 @@
-const router = require("express").Router();
+const User = require('./User');
+const Post = require('./Post');
+const Comment = require('./Comment');
 
-const postRoutes = require("./post-routes");
-const commentRoutes = require("./comment-routes");
-const userRoutes = require("./user-routes");
+// User hasMany Comments
+User.hasMany(Comment, {
+    foreignKey: 'user_id',
+    onDelete: 'CASCADE'
+});
 
-router.use("/posts", postRoutes);
-router.use("/comments", commentRoutes);
-router.use("/users", userRoutes);
+// User hasMany Posts
+User.hasMany(Post, {
+    foreignKey: 'user_id',
+    onDelete: 'CASCADE'
+});
 
-module.exports = router;
+// Comment belongsTo User
+Comment.belongsTo(User, {
+    foreignKey: 'user_id'
+});
+
+// Comment belongsTo Post
+Comment.belongsTo(Post, {
+    foreignKey: 'post_id'
+});
+
+// Post belongsTo User
+Post.belongsTo(User, {
+    foreignKey: 'user_id',
+});
+
+// Post hasMany Comments
+Post.hasMany(Comment, {
+    foreignKey: 'post_id',
+    onDelete: 'CASCADE'
+});
+
+module.exports = { User, Post, Comment };
