@@ -1,14 +1,14 @@
 {{#each posts as |post| }}
 <div class="row mb-4 post">
-    <div id="'allPosts" class="col-md-5">
+    <div id="allPosts" class="col-md-5">
         <h2>
-            <a href="/post/{{post.id}}">{{sanitize post.title}}</a>
+            <a href="/post/{{post.id}}" style="color: rgb(184,14,61)">{{sanitize post.title}}</a>
         </h2>
         <p>Created by {{sanitize user.email}} on {{post.createdAt}}</p>
     </div>
-    <div class="col-md-7">
+    <div id="postText" class="col-md-7">
         <p>
-            {{sanitize post.post.txt}}
+            {{sanitize post.post_text}}
         </p>
     </div>
 </div>

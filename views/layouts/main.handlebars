@@ -5,24 +5,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tech Blog</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" >
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+  {{!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"> --}}
+  {{!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" /> --}}
+  <link rel="stylesheet" href="/css/jass.css">
   <link rel="stylesheet" href="/css/style.css">
 </head>
 
-<body>
+<body style="background-color: rgb(232,239,255);">
   <div class="flex-column justify-space-around">
-    <header class="display-flex justify-space-between align-center p-2">
+    {{!-- Change Header color --}}
+    <header class="display-flex justify-space-between align-center p-2" style="background-color: rgb(81,88,117)">
       <h1>
-        <a href="/">Tech Blog</a>
+        {{!-- tech-blog text color --}}
+        <a href="/"style='color: rgb(23,32,42);'>Tech Blog</a>
       </h1>
       <nav>
         <!-- Conditionally render login or logout links -->
         {{#if session.loggedIn}}
-        <a href="/profile">Profile</a> |
-        <button class="no-button" id="logout">Logout</button>
+        <a href="/profile" style='color: rgb(23,32,42);'>Create Post</a> |
+        <button class="no-button" id="logout" style='color: rgb(23,32,42);'>Logout</button>
         {{else}}
-        <a href="/login">Login</a>
+        <a href="/login" style='color: rgb(23,32,42);'>Login</a>
         {{/if}}
       </nav>
     </header>
@@ -31,7 +34,7 @@
       {{{ body }}}
     </main>
     <footer>
-      
+
     </footer>
   </div>
 

@@ -27,7 +27,7 @@
 </div>
 
 {{#each post.comments as |comment| }}
-<div comment-id={{comment.id}}>
+<div id="commentResponse" comment-id={{comment.id}}>
     {{#compare comment.user_id "==" ../session.user_id }}
     <button id="edit-comment" class="btn btn-primary">Edit</button>
     <button id="delete-comment" class="btn btn-primary">Delete</button>

@@ -14,10 +14,10 @@ const seedDatabase = async () => {
   });
 
   for (const post of postSeed) {
-  /*  await Post.create({
-      ...post,
-      user_id: users[Math.floor(Math.random() * users.length)].id,
-    });*/
+    // await Post.create({
+    //   ...post,
+    //   user_id: users[Math.floor(Math.random() * users.length)].id,
+    // });
   }
   for (const comment of commentSeed) {
     await Comment.create({
