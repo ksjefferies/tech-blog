@@ -72,7 +72,6 @@ document
     .querySelector('.new-comment-form')
     .addEventListener('submit', newCommentHandler);
 
-
 document.querySelectorAll("#edit-comment")?.forEach(element => element.addEventListener('click', toggleEdit))
 
 document.querySelectorAll('#delete-comment')?.forEach(element => element.addEventListener('click', deleteComment))

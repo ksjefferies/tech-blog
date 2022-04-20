@@ -1,35 +1,31 @@
-header, .project:not(:last-child) {
-    border-bottom: 1px solid black;
-    /* background-color: beige; */
-  }
-  
-  .no-button {
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    /* color: #1b89bc; */
-    text-decoration: none;
-    font-size: 100%;
-  }
-  
-  .no-button:hover {
-    /* color: #065b83; */
-    text-decoration: underline;
-  }
-  
- /* div {
-   background-color: lightblue;
- } */
+header,
+.project:not(:last-child) {
+  border-bottom: 1px solid black;
+}
 
- #project, #commentResponse{
-   border: 1px solid black;
- }
+.no-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 100%;
+}
 
- #postText, #allPosts {
-   border-bottom: 1px solid black;
- }
+.no-button:hover {
+  text-decoration: underline;
+}
 
- #comment-text {
-   border-top: 1px solid black;
- }
+#project,
+#commentResponse {
+  border: 1px solid black;
+}
+
+#postText,
+#allPosts {
+  border-bottom: 1px solid black;
+}
+
+#comment-text {
+  border-top: 1px solid black;
+}

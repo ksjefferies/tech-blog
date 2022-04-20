@@ -15,7 +15,7 @@ class User extends Model {
         return bcrypt.compare(password, this.password)
     }
 
- }
+}
 
 User.init(
     {
@@ -37,7 +37,7 @@ User.init(
         password: {
             type: DataTypes.STRING,
             allowNull: false
-        }        
+        }
     },
     {
         sequelize,
@@ -45,9 +45,8 @@ User.init(
         freezeTableName: true,
         underscored: true,
         modelName: 'user'
-      }
+    }
 );
-
 
 User.beforeCreate(hashPassword)
 User.beforeUpdate(hashPassword)

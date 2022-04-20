@@ -13,7 +13,7 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 //handlebars
-const hbs = exphbs.create({helpers: handlebarHelpers});
+const hbs = exphbs.create({ helpers: handlebarHelpers });
 
 const sess = {
   secret: 'Super secret secret',
@@ -29,8 +29,6 @@ app.use(session(sess));
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
-// app.set('views', './views')
-
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
