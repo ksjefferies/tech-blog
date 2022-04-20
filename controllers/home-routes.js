@@ -1,66 +1,89 @@
 const { Post, User, Comment } = require('../models');
 const router = require('express').Router();
-const sequelize = require('../config/connection');
-const withAuthorization = require('../utils/auth');
+// const sequelize = require('../config/connection');
+const withAuth = require('../utils/auth');
+
 router.get('/', async (req, res) => {
-    try {    
-      const postData = await Post.findAll({
-        include: [User],
-      });
+  try {
+    const postData = await Post.findAll({
+      include: [User],
+    });
 
-      const posts = postData.map((post) => post.get({ plain: true }));
-  
-      res.render('landing_page', {
-       posts: posts
-      })
-    } catch (err) {
-      res.status(500).json(err);
-    }
-  }); 
+    const posts = postData.map((post) => post.get({ plain: true })).reverse();
 
-  router.get('/post/:id', withAuthorization, async (req, res) => {
-    try {     
-      const postData = await Post.findOne({
-     
-        where: {id: req.params.id},
-        include: [
-          User,
-          {
-            model: Comment,
-            include: [User],
-          },
-        ],
-      });
-  
-      if (postData) {
-    
-        const post = postData.get({ plain: true });
-   
-        console.log(post);
-        res.render('single-post', { post, loggedIn: req.session.loggedIn});
-      } else {
-        res.status(404).end();
-      }
-    } catch (err) {
-      res.status(500).json(err);
-    }
-  });
-  
-  router.get('/login', (req, res) => {
-    if (req.session.loggedIn) {
-      res.redirect('/dashboard');
-      return;
-    }
-    res.render('login');
-  });
-  
-  router.get('/signup', (req, res) => {
-    if (req.session.loggedIn) {
-      res.redirect('/dashboard');
-      return;
-    }
-  
-    res.render('signup');
-  });
-  
-  module.exports = router;
+    res.render('homepage', {
+      posts,
+      session: req.session
+    })
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/post/:id', async (req, res) => {
+  try {
+    const postData = await Post.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          attributes: [
+            'username',
+          ],
+        },
+        {
+          model: Comment,
+          attributes: ['id', 'comment_text', 'user_id', 'post_id','created_at'],
+          include: [{ model: User }]
+        }
+      ]
+    });
+
+    let post = postData.get({ plain: true });
+    post.comments = post.comments.reverse()
+
+    res.render('post', {
+      post,
+      session: req.session
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/profile', withAuth, async (req, res) => {
+  try {
+    // Find the logged in user from session ID
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ['password'] },
+      include: [{ model: Post }],
+    });
+
+    const user = userData.get({ plain: true });
+
+    res.render('profile', {
+      ...user,
+      session: req.session
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/login', (req, res) => {
+  if (req.session.logged_in) {
+    res.redirect('/profile');
+    return;
+  }
+  res.render('login');
+});
+
+// router.get('/signup', (req, res) => {
+//   if (req.session.loggedIn) {
+//     res.redirect('/dashboard');
+//     return;
+//   }
+
+//   res.render('signup');
+// });
+
+module.exports = router;

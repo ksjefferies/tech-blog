@@ -1,0 +1,43 @@
+<div class="text-center">
+    <h2>{{post.title}}</h2>
+
+    <p>Created by {{sanitize post.user.username}} on {{post.createdAt}}</p>
+    <div>
+        <p>
+            {{sanitize post.post_text}}
+        </p>
+    </div>
+
+    {{#if session.loggedIn}}
+    <form class="form new-comment-form">
+        <div class="form-group">
+            <textarea class="form-input" id="comment_text" name="comment_text"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Comment</button>
+        <div class="form-group">
+
+        </div>
+    </form>
+    {{else}}
+    <a href="/login">Please Log in to Comment</a>
+    {{/if}}
+
+
+</div>
+
+{{#each post.comments as |comment| }}
+<div comment-id={{comment.id}}>
+    {{#compare comment.user_id "==" ../session.user_id }}
+    <button id="edit-comment" class="btn btn-primary">Edit</button>
+    <button id="delete-comment" class="btn btn-primary">Delete</button>
+    {{/compare}}
+    <p>User: {{sanitize comment.user.username}}</p>
+    <p>Created At: {{ comment.created_at }} </p>
+
+    <p id="comment-text">{{sanitize comment.comment_text}}</p>
+</div>
+
+{{/each}}
+
+<script src="/js/post.js"></script>

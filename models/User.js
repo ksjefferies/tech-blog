@@ -3,14 +3,19 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 const bcrypt = require('bcrypt');
 
-async function hashPassword(user,option) {
-    if(user.password) {
-        user.password = await bcrypt.hash(user.password,10)
+const hashPassword = async (user, options) => {
+    if (user.password) {
+        const hashedPassword = await bcrypt.hash(user.password, 10)
+        user.password = hashedPassword
     }
-    return user
+    return user;
 }
+class User extends Model {
+    checkPassword(password) {
+        return bcrypt.compare(password, this.password)
+    }
 
-class User extends Model { }
+ }
 
 User.init(
     {
@@ -43,7 +48,7 @@ User.init(
       }
 );
 
-User.beforeBulkCreate((async (users) => Promise.all(users.map(i => hashPassword(i)))))
+
 User.beforeCreate(hashPassword)
 User.beforeUpdate(hashPassword)
 
