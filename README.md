@@ -27,7 +27,7 @@ We were asked to build a CMS-style blog site similar to a Wordpress site, where 
 Tech Blog Image:
 ![Screenshot of Tech Blog Site](./public/images/tech-blog.jpg)
 
-- [Heroku Deployment](https://note-taker-2022-3.herokuapp.com/)
+- [Tech-Blog Heroku Deployment](https://tech-blog-11.herokuapp.com/)
 
 ----
 ## Github Repository:
