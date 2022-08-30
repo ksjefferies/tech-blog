@@ -5,7 +5,6 @@
 
 - [Description](#description)
 - [Image](#image)
-- [Site URL](#site-url)
 - [GitHub Repository](#github-repository)
 - [Author](#author)  
 - [Contributors and Resources](#contributors-and-resources)
@@ -23,10 +22,6 @@ Tech Blog Image:
 ![Screenshot of Tech Blog Site](./public/images/tech-blog.jpg)
 
 -----
-## Site URL:
-
-- [Tech-Blog Heroku Deployment](https://tech-blog-11.herokuapp.com/)
-
 ## Github Repository:
 
 - [Github Repository for Tech Blog](https://github.com/ksjefferies/tech-blog)
@@ -43,7 +38,6 @@ Tech Blog Image:
 ![MySQL](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)  
 ![Sequelize](https://img.shields.io/badge/Sequelize-52B0E7?style=for-the-badge&logo=Sequelize&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
-![Heroku](https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white)
 
 ## License:
 
