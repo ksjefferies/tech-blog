@@ -105,3 +105,4 @@ dist
 
 package-lock.json
 README-REQ.md
+.DS_Store
